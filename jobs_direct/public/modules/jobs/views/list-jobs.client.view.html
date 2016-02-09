@@ -1,0 +1,31 @@
+<section data-ng-controller="JobsController" data-ng-init="find()">
+	<div class="page-header">
+		<h1>Jobs</h1>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Company</th>
+				<th>State</th>
+				<th>Hourly Wage</th>
+				<th>Date Listed</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr data-ng-repeat="job in jobs">
+				<td><a href="#!/jobs/{{job._id}}">{{job.title}}</a></td>
+				<td>{{job.company}}</td>
+				<td>{{job.state}}</td>
+				<td>{{job.hourly_wage}}</td>
+				<td>{{job.created | date:'mediumDate'}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="alert alert-warning text-center" data-ng-if="jobs.$resolved && !jobs.length">
+		No jobs yet, why don't you <a href="/#!/jobs/create">post one</a>?
+	</div>
+</section>
